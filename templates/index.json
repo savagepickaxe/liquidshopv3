@@ -11,7 +11,10 @@
   "sections": {
     "main": {
       "type": "main-index",
+      "disabled": true,
       "settings": {
+        "header_text": "Welcome to our store",
+        "header_subtext": "We are glad to see you here"
       }
     }
   },
