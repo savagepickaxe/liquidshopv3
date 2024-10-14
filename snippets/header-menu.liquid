@@ -1,26 +1,23 @@
-<div class="header">
-    <div class="header__menu">
-        <div class="header__menu--logo">
-        <a href="{{ routes.home }}">
-            <img src="{{ 'LiquidSolution-Logo-Black.png' | asset_url }}" alt="logo" width="200px" height="200px">
-
-        </a>
-        </div>
-        <div class="header__menu--links">
-        <ul>
-            <li>
-            <a href="{{ routes.home }}">Home</a>
-            </li>
-            <li>
-            <a href="{{ routes.about }}">About</a>
-            </li>
-            <li>
-            <a href="{{ routes.services }}">Services</a>
-            </li>
-            <li>
-            <a href="{{ routes.contact }}">Contact</a>
-            </li>
-        </ul>
-        </div>
+<header class="header-nav">
+    <div>
+<a href="/">
+<img 
+width="200"
+height="200"
+loading="lazy"
+src="{{ LiquidSolution-Logo-Black.png | asset_url }}" alt="">
+</a>
     </div>
-</div>
+    <div>
+
+    <ul class="nav">
+
+        {% for link in linklist['main-menu'].links %}
+        <li> {{ link.title | link_to: lnik.url }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div>
+
+    </div>
+</header>
