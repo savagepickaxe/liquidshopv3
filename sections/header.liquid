@@ -7,9 +7,13 @@
   <div class="hidden md:flex space-x-8">
     {% render 'layout-menu' %}
   </div>
-
+  <div class="bg-red-500 text-white">
+    Test Tailwind
+  </div>
+  
   <!-- Actions utilisateur -->
   <div class="flex items-center space-x-6">
+
     {% if shop.customer_accounts_enabled %}
       {% if customer %}
         <a href="{{ routes.account_url }}" class="text-gray-700 hover:text-gray-900">
