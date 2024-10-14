@@ -11,12 +11,12 @@ module.exports = {
     extend: {},
     container: {
       center: true,
-      padding: '1rem'
-    }
+      padding: '1rem',
+    },
   },
   plugins: [],
   content: [
-    path.resolve(__dirname, '**/*.{js,vue}'),
-    path.resolve(__dirname, '../shopify/**/*.liquid')
-  ]
+    './**/*.{js,vue}',
+    '../shopify/**/*.liquid',
+  ],
 }
