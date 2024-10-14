@@ -9,13 +9,13 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-index",
+    "accueil_BxJEYG": {
+      "type": "accueil",
       "settings": {
       }
     }
   },
   "order": [
-    "main"
+    "accueil_BxJEYG"
   ]
 }
