@@ -29,17 +29,25 @@
       <li class="dropdown">
         {% for locale in shop.enabled_locales %}
           {% if locale != shop.locale %}
-            <a href="{{ locales | asset_url: request.fullpath }}" class="dropbtn menu__lien" id="languageBtn">{{ locale | upcase }}</a>
+            <a href="{{ locale | asset_url: request.fullpath }}" class="dropbtn menu__lien" id="languageBtn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" fill="currentColor"/>
+              </svg>
+              {{ locale | upcase }}
+            </a>
           {% endif %}
         {% endfor %}
       </li>
       <li class="menu__listeItem mobile--search">
-        <a href="{{ routes.cart_url }}" class="menu__lien">
-          <span class="cart">
-            <!-- Code SVG du panier -->
-          </span>
-        </a>
-      </li>
+  <a href="{{ routes.cart_url }}" class="menu__lien">
+    <span class="cart">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 4V2H17V4H21V6H19L17.01 19H6.99L5 6H3V4H7ZM17 6H7L8.66 17H15.34L17 6ZM9 22C8.45 22 8 21.55 8 21C8 20.45 8.45 20 9 20C9.55 20 10 20.45 10 21C10 21.55 9.55 22 9 22ZM15 22C14.45 22 14 21.55 14 21C14 20.45 14.45 20 15 20C15.55 20 16 20.45 16 21C16 21.55 15.55 22 15 22Z" fill="currentColor"/>
+      </svg>
+    </span>
+  </a>
+</li>
+
     </ul>
   </nav>
 </header>
