@@ -6,4 +6,56 @@
 /** Palette de couleurs **/
 /* Couleurs de base */
 /* Autres couleurs */
-/** Points de rupture **//*# sourceMappingURL=styles.css.map */
+/** Points de rupture **/
+.header-nav {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0 30px 0 30px;
+  background-color: white;
+}
+
+.nav--mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.nav--mid ul {
+  display: flex;
+  font-size: 17px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.nav--mid li {
+  padding: 10px;
+  list-style: none;
+}
+
+.nav--mid a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav--mid a:hover {
+  color: #ff6f61;
+  text-decoration: none;
+}
+
+.nav--droite {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.search--nav {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: beige;
+}/*# sourceMappingURL=styles.css.map */
