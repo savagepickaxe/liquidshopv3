@@ -1,12 +1,10 @@
-/**
- * Tailwind CSS configuration file
- *
- * docs: https://tailwindcss.com/docs/configuration
- * default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
- */
-const path = require('path')
-
 module.exports = {
+  mode: 'jit', // Active le mode Just-In-Time de Tailwind pour générer les classes à la volée
+  purge: [
+    './**/*.liquid',  // Vérifie tous les fichiers Liquid
+    './**/*.html',    // Vérifie tous les fichiers HTML
+    './**/*.js',      // Vérifie tous les fichiers JavaScript
+  ],
   theme: {
     extend: {},
     container: {
@@ -15,9 +13,4 @@ module.exports = {
     },
   },
   plugins: [],
-  content: [
-    './**/*.liquid',
-    './**/*.html',
-    './**/*.js',
-  ],
 }
