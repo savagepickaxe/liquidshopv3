@@ -1,0 +1,120 @@
+<header class="entete">
+  <div class="bgMobile"></div>
+  <nav class="menu">
+    <div class="toggle-bouton">
+      <button class="burger" onclick="this.classList.toggle('active')" id="burger"><span></span></button>
+    </div>
+
+    <ul class="menu__liste">
+      <li class="menu__listeItem">
+        <a href="{{ routes.root_url }}" class="menu__lien" id="menuAccueil">{{ 'menu.home' | t }}</a>
+      </li>
+      <li class="menu__listeItem">
+        <a href="/collections" class="menu__lien" id="menuShop">{{ 'menu.shop' | t }}</a>
+      </li>
+      <li class="menu__listeItem">
+        <a href="#aboutUs" class="menu__lien" id="menuAboutUs">{{ 'menu.about_us' | t }}</a>
+      </li>
+      <li class="menu__listeItem">
+        <a href="{{ routes.contact_url }}" class="menu__lien" id="menuContact">{{ 'menu.contact' | t }}</a>
+      </li>
+      <li class="menu__listeItem mobile--search">
+        <a href="{{ routes.root_url }}">
+          <div class="logo">
+            <img src="{{ 'logoliquid2.png' | asset_url }}" alt="logoLiquid" width="200" height="100">
+
+          </div>
+        </a>
+      </li>
+      <li class="dropdown">
+        {% for locale in shop.enabled_locales %}
+          {% if locale != shop.locale %}
+            <a href="{{ locales | asset_url: request.fullpath }}" class="dropbtn menu__lien" id="languageBtn">{{ locale | upcase }}</a>
+          {% endif %}
+        {% endfor %}
+      </li>
+      <li class="menu__listeItem mobile--search">
+        <a href="{{ routes.cart_url }}" class="menu__lien">
+          <span class="cart">
+            <!-- Code SVG du panier -->
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animation de la barre de navigation au scroll
+    const bod = document.body;
+    const menu = document.querySelector('.entete');
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll <= 0) {
+        menu.classList.remove("black-bg");
+        bod.classList.remove("scroll-up");
+        return;
+      }
+      if (currentScroll > lastScroll && !bod.classList.contains("scroll-down")) {
+        bod.classList.remove("scroll-up");
+        bod.classList.add("scroll-down");
+        menu.classList.remove("black-bg");
+      } else if (currentScroll < lastScroll && bod.classList.contains("scroll-down")) {
+        bod.classList.remove("scroll-down");
+        bod.classList.add("scroll-up");
+        menu.classList.add("black-bg");
+      }
+      lastScroll = currentScroll;
+    });
+
+    // Animation du menu burger pour mobile
+    let nn = gsap.matchMedia();
+    nn.add("(max-width: 800px)", () => {
+      let background = document.querySelector('.bgMobile');
+      let texteMenu = document.querySelectorAll('.menu__lien');
+      let boutonBurger = document.querySelector('.burger');
+
+      if (!background || !texteMenu || !boutonBurger) return;
+
+      // Séparation des lettres pour l'animation
+      texteMenu.forEach((element) => {
+        new SplitType(element, { types: 'words, chars' });
+      });
+
+      // Gestion du clic sur le bouton burger
+      boutonBurger.addEventListener('click', function () {
+        let mots = document.querySelectorAll('.menu__lien');
+
+        if (!boutonBurger.classList.contains("active")) {
+          mots.forEach((mot) => {
+            gsap.to(mot, {
+              stagger: -0.025,
+              ease: 'power4.out',
+              duration: 1,
+              y: -100,
+              opacity: 0,
+              display: 'none',
+            });
+          });
+          gsap.to(background, { height: '0vh', duration: 1 });
+        } else {
+          mots.forEach((mot) => {
+            gsap.to(mot, {
+              stagger: 0.025,
+              ease: 'power4.out',
+              duration: 1,
+              y: 0,
+              opacity: 1,
+              display: 'block',
+            });
+          });
+          gsap.to(background, { height: '300vh', duration: 1 });
+        }
+      });
+    });
+  });
+</script>
