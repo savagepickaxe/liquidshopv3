@@ -212,4 +212,43 @@
   .search-btn {
     display: inline-block;
   }
+}
+.image-slider-wrapper {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.image-slider {
+  display: flex;
+}
+
+.slide {
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
 }/*# sourceMappingURL=styles.css.map */

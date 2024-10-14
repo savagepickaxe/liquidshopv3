@@ -1,68 +1,81 @@
-<section>
+<!-- Section Liquid -->
+<div class="image-slider-wrapper">
+  <div class="image-slider">
+    {% for block in section.blocks %}
+      <div class="slide">
+        <img 
+        width="100%"
+        height="100%"
+        src="{{ block.settings.image | img_url: 'large' }}" alt="{{ block.settings.alt_text }}">
+      </div>
+    {% endfor %}
+  </div>
 
-<div class="three-images-wrapper">
-
-{% if section.settings.image != blank %}
-    <div class="one-user">
-        <h1></h1>
-    </div>
-{% else %}
-<div class="one">
-    <h1></h1>
-</div>
-{% endif %}
-
-{% if section.settings.image2 != blank %}
-    <div class="two-user">
-        <h1></h1>
-    </div>
-{% else %}
-<div class="two">
-    <h1></h1>
-</div>
-{% endif %}
-
-{% if section.settings.image3 != blank %}
-    <div class="three-user">
-        <h1></h1>
-    </div>
-{% else %}
-<div class="three">
-    <h1></h1>
-</div>
-{% endif %}
+  <!-- Buttons for navigation -->
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
 </div>
 
-</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+
+    function showSlides(index) {
+      if (index >= slides.length) {
+        slideIndex = 0;
+      } else if (index < 0) {
+        slideIndex = slides.length - 1;
+      }
+      slides.forEach(slide => slide.style.display = 'none');
+      slides[slideIndex].style.display = 'block';
+    }
+
+    prevButton.addEventListener('click', function() {
+      slideIndex--;
+      showSlides(slideIndex);
+    });
+
+    nextButton.addEventListener('click', function() {
+      slideIndex++;
+      showSlides(slideIndex);
+    });
+
+    showSlides(slideIndex); // Show the first slide initially
+  });
+</script>
 
 {% schema %}
+{
+  "name": "Image Slider",
+  "settings": [],
+  "blocks": [
     {
-      "name": "three-images",
+      "type": "image_slide",
+      "name": "Slide",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "image",
-          "info": "400 x 120px .png recommended"
+          "label": "Slide Image"
         },
         {
-          "type": "image_picker",
-          "id": "image2",
-          "label": "image2",
-          "info": "400 x 120px .png recommended"
-        },
-        {
-          "type": "image_picker",
-          "id": "image3",
-          "label": "image3",
-          "info": "400 x 120px .png recommended"
-        }
-      ],
-      "blocks": [],
-      "presets": [
-        {
-          "name": "accueil"
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Slider Image"
         }
       ]
     }
-    {% endschema %}
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
