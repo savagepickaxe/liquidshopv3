@@ -2,11 +2,10 @@
  {import('tailwindcss/tailwind-config').TailwindConfig}
 
 module.exports = {
-  mode: 'jit',
   content: [
+    '../**/*.liquid',
     './**/*.liquid',
-    './**/*.html',
-    './**/*.js',
+    '/**/*.liquid',
   ],
   theme: {
     extend: {},
