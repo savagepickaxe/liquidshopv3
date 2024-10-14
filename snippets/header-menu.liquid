@@ -19,5 +19,17 @@ src="{{ LiquidSolution-Logo-Black.png | asset_url }}" alt="">
     </div>
     <div>
 
+    \
+    <ul class="nav">
+        {% for link in linklist['main-menu'].links %}
+        <li> {{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+    </ul>
     </div>
-</header>
+ <div>
+
+
+
+    </div>
+</header>   
+
