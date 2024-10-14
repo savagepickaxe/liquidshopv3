@@ -16,7 +16,8 @@ module.exports = {
   },
   plugins: [],
   content: [
-    './**/*.{js,vue}',
-    '../shopify/**/*.liquid',
+    './**/*.liquid',
+    './**/*.html',
+    './**/*.js',
   ],
 }
