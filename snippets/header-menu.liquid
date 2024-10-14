@@ -1,128 +1,25 @@
-<header class="entete">
-  <div class="bgMobile"></div>
-  <nav class="menu">
-    <div class="toggle-bouton">
-      <button class="burger" onclick="this.classList.toggle('active')" id="burger"><span></span></button>
-    </div>
-
-    <ul class="menu__liste">
-      <li class="menu__listeItem">
-        <a href="{{ routes.root_url }}" class="menu__lien" id="menuAccueil">{{ 'menu.home' | t }}</a>
-      </li>
-      <li class="menu__listeItem">
-        <a href="/collections" class="menu__lien" id="menuShop">{{ 'menu.shop' | t }}</a>
-      </li>
-      <li class="menu__listeItem">
-        <a href="#aboutUs" class="menu__lien" id="menuAboutUs">{{ 'menu.about_us' | t }}</a>
-      </li>
-      <li class="menu__listeItem">
-        <a href="{{ routes.contact_url }}" class="menu__lien" id="menuContact">{{ 'menu.contact' | t }}</a>
-      </li>
-      <li class="menu__listeItem mobile--search">
-        <a href="{{ routes.root_url }}">
-          <div class="logo">
-            <img src="{{ 'logoliquid2.png' | asset_url }}" alt="logoLiquid" width="200" height="100">
-
-          </div>
+<div class="header">
+    <div class="header__menu">
+        <div class="header__menu--logo">
+        <a href="{{ routes.home }}">
+            <img src="{{ assets.logoliquid2.png }}" alt="logo" width="200px" height="200px">
         </a>
-      </li>
-      <li class="dropdown">
-        {% for locale in shop.enabled_locales %}
-          {% if locale != shop.locale %}
-            <a href="{{ locale | asset_url: request.fullpath }}" class="dropbtn menu__lien" id="languageBtn">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" fill="currentColor"/>
-              </svg>
-              {{ locale | upcase }}
-            </a>
-          {% endif %}
-        {% endfor %}
-      </li>
-      <li class="menu__listeItem mobile--search">
-  <a href="{{ routes.cart_url }}" class="menu__lien">
-    <span class="cart">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 4V2H17V4H21V6H19L17.01 19H6.99L5 6H3V4H7ZM17 6H7L8.66 17H15.34L17 6ZM9 22C8.45 22 8 21.55 8 21C8 20.45 8.45 20 9 20C9.55 20 10 20.45 10 21C10 21.55 9.55 22 9 22ZM15 22C14.45 22 14 21.55 14 21C14 20.45 14.45 20 15 20C15.55 20 16 20.45 16 21C16 21.55 15.55 22 15 22Z" fill="currentColor"/>
-      </svg>
-    </span>
-  </a>
-</li>
-
-    </ul>
-  </nav>
-</header>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animation de la barre de navigation au scroll
-    const bod = document.body;
-    const menu = document.querySelector('.entete');
-    let lastScroll = 0;
-
-    window.addEventListener("scroll", () => {
-      const currentScroll = window.pageYOffset;
-      if (currentScroll <= 0) {
-        menu.classList.remove("black-bg");
-        bod.classList.remove("scroll-up");
-        return;
-      }
-      if (currentScroll > lastScroll && !bod.classList.contains("scroll-down")) {
-        bod.classList.remove("scroll-up");
-        bod.classList.add("scroll-down");
-        menu.classList.remove("black-bg");
-      } else if (currentScroll < lastScroll && bod.classList.contains("scroll-down")) {
-        bod.classList.remove("scroll-down");
-        bod.classList.add("scroll-up");
-        menu.classList.add("black-bg");
-      }
-      lastScroll = currentScroll;
-    });
-
-    // Animation du menu burger pour mobile
-    let nn = gsap.matchMedia();
-    nn.add("(max-width: 800px)", () => {
-      let background = document.querySelector('.bgMobile');
-      let texteMenu = document.querySelectorAll('.menu__lien');
-      let boutonBurger = document.querySelector('.burger');
-
-      if (!background || !texteMenu || !boutonBurger) return;
-
-      // Séparation des lettres pour l'animation
-      texteMenu.forEach((element) => {
-        new SplitType(element, { types: 'words, chars' });
-      });
-
-      // Gestion du clic sur le bouton burger
-      boutonBurger.addEventListener('click', function () {
-        let mots = document.querySelectorAll('.menu__lien');
-
-        if (!boutonBurger.classList.contains("active")) {
-          mots.forEach((mot) => {
-            gsap.to(mot, {
-              stagger: -0.025,
-              ease: 'power4.out',
-              duration: 1,
-              y: -100,
-              opacity: 0,
-              display: 'none',
-            });
-          });
-          gsap.to(background, { height: '0vh', duration: 1 });
-        } else {
-          mots.forEach((mot) => {
-            gsap.to(mot, {
-              stagger: 0.025,
-              ease: 'power4.out',
-              duration: 1,
-              y: 0,
-              opacity: 1,
-              display: 'block',
-            });
-          });
-          gsap.to(background, { height: '300vh', duration: 1 });
-        }
-      });
-    });
-  });
-</script>
+        </div>
+        <div class="header__menu--links">
+        <ul>
+            <li>
+            <a href="{{ routes.home }}">Home</a>
+            </li>
+            <li>
+            <a href="{{ routes.about }}">About</a>
+            </li>
+            <li>
+            <a href="{{ routes.services }}">Services</a>
+            </li>
+            <li>
+            <a href="{{ routes.contact }}">Contact</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</div>
