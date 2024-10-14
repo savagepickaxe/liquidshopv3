@@ -19,7 +19,7 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-  
+    {{ 'bundle.css' | asset_url | stylesheet_tag }}
 
     <!-- header hook for Shopify plugins -->
     {{ content_for_header }}
@@ -37,6 +37,6 @@
     </div>
 
     <!-- webpack bundle -->
-  
+    <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>
