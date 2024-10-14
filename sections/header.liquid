@@ -1,37 +1,36 @@
-<div class="container">
-  <a href="{{ routes.root_url }}">
+<div class="container mx-auto px-4 flex justify-between items-center py-4">
+  <a href="{{ routes.root_url }}" class="text-2xl font-bold text-gray-800">
     Logo
   </a>
 
-  {% render 'layout-menu' %}
+  <!-- Menu -->
+  <div class="hidden md:flex space-x-8">
+    {% render 'layout-menu' %}
+  </div>
 
-  <div>
+  <!-- Actions utilisateur -->
+  <div class="flex items-center space-x-6">
     {% if shop.customer_accounts_enabled %}
       {% if customer %}
-        <a href="{{ routes.account_url }}">
+        <a href="{{ routes.account_url }}" class="text-gray-700 hover:text-gray-900">
           {{ 'action.account' | t }}
         </a>
-        {{ 'action.log_out' | t | customer_logout_link }}
+        <a href="{{ routes.logout_url }}" class="text-gray-700 hover:text-gray-900">
+          {{ 'action.log_out' | t }}
+        </a>
       {% else %}
-        {{ 'action.log_in' | t | customer_login_link }}
-        {{ 'action.register' | t | customer_register_link }}
+        <a href="{{ routes.login_url }}" class="text-gray-700 hover:text-gray-900">
+          {{ 'action.log_in' | t }}
+        </a>
+        <a href="{{ routes.register_url }}" class="text-gray-700 hover:text-gray-900">
+          {{ 'action.register' | t }}
+        </a>
       {% endif %}
     {% endif %}
 
-    <a href="{{ routes.cart_url }}">
+    <!-- Panier -->
+    <a href="{{ routes.cart_url }}" class="text-gray-700 hover:text-gray-900">
       {{ 'action.cart' | t }}
     </a>
   </div>
 </div>
-
-{% schema %}
-{
-  "name": "t:sections.header.name",
-  "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:sections.header.settings.paragraph"
-    }
-  ]
-}
-{% endschema %}
