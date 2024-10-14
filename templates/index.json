@@ -11,6 +11,18 @@
   "sections": {
     "accueil_BxJEYG": {
       "type": "accueil",
+      "blocks": {
+        "image_slide_G3hr6D": {
+          "type": "image_slide",
+          "settings": {
+            "image": "shopify://shop_images/bouteille1.webp",
+            "alt_text": "Slider Image"
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_G3hr6D"
+      ],
       "settings": {
       }
     }
