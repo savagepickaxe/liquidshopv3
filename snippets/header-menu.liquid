@@ -1,4 +1,7 @@
 <header class="header-nav">
+    <div class="toggle-bouton">
+        <button class="burger">  <span></span></button>
+    </div>
     <div class="nav--gauche">
 <a href="/">
 <img 
@@ -20,8 +23,15 @@ src="{{ 'LiquidSolution-Logo-Black.png' | asset_url }}"
     </ul>
     </div>
     <div class="nav--droite">
+       
         <form action="/search">
         <input class="search--nav" placeholder="search" type="search">
+        <button class="search-btn" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </form>
         <a href="/cart" class="cart--nav">
         <img 
@@ -39,4 +49,30 @@ src="{{ 'LiquidSolution-Logo-Black.png' | asset_url }}"
 
     </div>
 </header>   
+<script>
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav--mid ul');
+    const navLinks = document.querySelectorAll('.nav--mid ul li');
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+            }
+        });
+        burger.classList.toggle('active');
+    });
+    function navLinkFade() {
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+            }
+        });
+    }
+    navLinkFade();
+</script>
 
