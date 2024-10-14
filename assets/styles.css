@@ -229,9 +229,10 @@
 }
 
 .slide img {
-  width: 100%;
-  height: auto;
-  display: block;
+  width: 100%; /* Garde l'image à 100% de la largeur de son conteneur */
+  height: auto; /* Ajuste la hauteur automatiquement pour garder les proportions */
+  max-height: 85vh; /* Limite la hauteur de l'image à 80% de la hauteur de la fenêtre */
+  object-fit: cover; /* Assure que l'image conserve ses proportions */
 }
 
 .prev, .next {
