@@ -1,43 +1,38 @@
-<div class="container mx-auto px-4 flex justify-between items-center py-4">
-  <a href="{{ routes.root_url }}" class="text-2xl font-bold text-gray-800">
-    Logo
-  </a>
-  <div style="background-color: red; color: white;">
-    Test inline styles
-  </div>
-  <h1 class="text-2xl text-blue-500 font-semibold">
-    Test Tailwind
-  </h1>
-  
-  <!-- Menu -->
-  <div class="hidden md:flex space-x-8">
-    {% render 'layout-menu' %}
-  </div>
 
-  <!-- Actions utilisateur -->
-  <div class="flex items-center space-x-6">
 
-    {% if shop.customer_accounts_enabled %}
-      {% if customer %}
-        <a href="{{ routes.account_url }}" class="text-gray-700 hover:text-gray-900">
-          {{ 'action.account' | t }}
-        </a>
-        <a href="{{ routes.logout_url }}" class="text-gray-700 hover:text-gray-900">
-          {{ 'action.log_out' | t }}
-        </a>
-      {% else %}
-        <a href="{{ routes.login_url }}" class="text-gray-700 hover:text-gray-900">
-          {{ 'action.log_in' | t }}
-        </a>
-        <a href="{{ routes.register_url }}" class="text-gray-700 hover:text-gray-900">
-          {{ 'action.register' | t }}
-        </a>
-      {% endif %}
-    {% endif %}
+<div class="p-12 text-center bg-blue-100">
 
-    <!-- Panier -->
-    <a href="{{ routes.cart_url }}" class="text-gray-700 hover:text-gray-900">
-      {{ 'action.cart' | t }}
-    </a>
-  </div>
+<h1 class="text-2xl text-blue-500 font-semibold"></h1>
 </div>
+
+{% schema %}
+
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header Text",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "text",
+      "id": "header_subtext",
+      "label": "Header Subtext",
+      "default": "We are glad to see you here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "category": "Header"
+    }
+  ]
+}
+
+{% endschema %}
