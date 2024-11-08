@@ -1,0 +1,110 @@
+<!-- Section Liquid -->
+<div class="image-slider-wrapper">
+  <div class="image-slider">
+    {% for block in section.blocks %}
+      <div class="slide">
+    
+      <img src="{{ block.settings.image | img_url: '2048x2048' }}" alt="{{ block.settings.alt_text }}" width="2048" height="2048">
+
+
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Buttons for navigation -->
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const slider = document.querySelector('.image-slider');
+  const totalSlides = slides.length;
+  const autoSlideInterval = 8000; // 8 secondes
+  let autoSlide;
+
+  // Fonction pour afficher la slide active en la faisant glisser
+  function showSlides(index) {
+    if (index >= totalSlides) {
+      slideIndex = 0;
+    } else if (index < 0) {
+      slideIndex = totalSlides - 1;
+    }
+
+    // Glissement en utilisant translateX
+    const translateXValue = -slideIndex * 100; // Translation de 100% pour chaque slide
+    slider.style.transform = `translateX(${translateXValue}%)`;
+  }
+
+  // Fonction pour démarrer le défilement automatique
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      slideIndex++;
+      showSlides(slideIndex);
+    }, autoSlideInterval);
+  }
+
+  // Fonction pour arrêter le défilement automatique
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+  }
+
+  // Bouton "Précédent"
+  document.querySelector('.prev').addEventListener('click', function() {
+    stopAutoSlide();
+    slideIndex--;
+    showSlides(slideIndex);
+    startAutoSlide(); // Redémarrer l'auto-slide après un clic
+  });
+
+  // Bouton "Suivant"
+  document.querySelector('.next').addEventListener('click', function() {
+    stopAutoSlide();
+    slideIndex++;
+    showSlides(slideIndex);
+    startAutoSlide(); // Redémarrer l'auto-slide après un clic
+  });
+
+  // Afficher la première slide au chargement
+  showSlides(slideIndex);
+
+  // Démarrer le défilement automatique
+  startAutoSlide();
+});
+
+</script>
+
+{% schema %}
+{
+  "name": "Image Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image_slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Slider Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

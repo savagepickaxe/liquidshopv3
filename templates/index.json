@@ -9,13 +9,33 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-index",
+    "accueil_BxJEYG": {
+      "type": "accueil",
+      "blocks": {
+        "image_slide_G3hr6D": {
+          "type": "image_slide",
+          "settings": {
+            "image": "shopify://shop_images/image1321321.jpg",
+            "alt_text": "Slider Image"
+          }
+        },
+        "image_slide_YxXrjA": {
+          "type": "image_slide",
+          "settings": {
+            "image": "shopify://shop_images/image21213.jpg",
+            "alt_text": "Slider Image"
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_G3hr6D",
+        "image_slide_YxXrjA"
+      ],
       "settings": {
       }
     }
   },
   "order": [
-    "main"
+    "accueil_BxJEYG"
   ]
 }

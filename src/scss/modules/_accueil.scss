@@ -1,0 +1,44 @@
+.image-slider-wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: $standard-max-width;
+  }
+  
+  .image-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transition pour le glissement */
+  }
+  
+  .slide {
+    min-width: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    object-fit: cover;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2; /* Pour s'assurer que les boutons sont au-dessus */
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
