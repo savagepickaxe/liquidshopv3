@@ -5,11 +5,12 @@
     <div class="nav--gauche">
 <a href="/">
 <img 
-width="250"
-height="100"
+width="40"
+height="40"
 loading="lazy"
-src="{{ 'LiquidSolution-Logo-Black.png' | asset_url }}" 
->
+src="{{ product.metafields.nom_du_namespace.image_personnalisee | img_url: '400x400' }}" 
+alt="Image personnalisée"
+/>
 </a>
     </div>
     <div class="nav--mid">
@@ -71,6 +72,13 @@ src="{{ 'LiquidSolution-Logo-Black.png' | asset_url }}"
                 link.style.animation = '';
             } else {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+            }
+        });
+    }
+    navLinkFade();
+</script>
+
++ 0.5}s`;
             }
         });
     }
