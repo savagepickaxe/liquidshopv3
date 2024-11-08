@@ -13,8 +13,11 @@
   margin: 0;
   padding: 0 30px 0 30px;
   background-color: white;
+<<<<<<< HEAD
   max-width: 1740px;
   margin: 0 auto;
+=======
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777
 }
 
 .nav--mid {
@@ -219,17 +222,24 @@
   position: relative;
   max-width: 100%;
   overflow: hidden;
+<<<<<<< HEAD
   margin: 0 auto;
   max-width: 1740px;
+=======
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777
 }
 
 .image-slider {
   display: flex;
+<<<<<<< HEAD
   transition: transform 0.5s ease-in-out; /* Transition pour le glissement */
+=======
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777
 }
 
 .slide {
   min-width: 100%;
+<<<<<<< HEAD
 }
 
 .slide img {
@@ -237,6 +247,16 @@
   height: auto;
   max-height: 85vh;
   object-fit: cover;
+=======
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%; /* Garde l'image à 100% de la largeur de son conteneur */
+  height: auto; /* Ajuste la hauteur automatiquement pour garder les proportions */
+  max-height: 85vh; /* Limite la hauteur de l'image à 80% de la hauteur de la fenêtre */
+  object-fit: cover; /* Assure que l'image conserve ses proportions */
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777
 }
 
 .prev, .next {
@@ -248,6 +268,7 @@
   border: none;
   padding: 10px;
   cursor: pointer;
+<<<<<<< HEAD
   z-index: 2; /* Pour s'assurer que les boutons sont au-dessus */
 }
 
@@ -257,4 +278,14 @@
 
 .next {
   right: 10px;
+=======
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777
 }/*# sourceMappingURL=styles.css.map */

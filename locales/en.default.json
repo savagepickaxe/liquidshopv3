@@ -7,6 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
+<<<<<<< HEAD
 /*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
@@ -24,3 +25,22 @@
     "contact": "Contact"
   }
 }
+=======
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "menu": {
+    "home": "Home",
+    "shop": "Shop",
+    "about_us": "About Us",
+    "contact": "Contact"
+  }
+}
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777

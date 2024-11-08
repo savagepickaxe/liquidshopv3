@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Section Liquid -->
 <div class="image-slider-wrapper">
   <div class="image-slider">
@@ -108,3 +109,86 @@ document.addEventListener('DOMContentLoaded', function() {
   ]
 }
 {% endschema %}
+=======
+<!-- Section Liquid -->
+<div class="image-slider-wrapper">
+  <div class="image-slider">
+    {% for block in section.blocks %}
+      <div class="slide">
+    
+      <img src="{{ block.settings.image | img_url: '2048x2048' }}" alt="{{ block.settings.alt_text }}" width="2048" height="2048">
+
+
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Buttons for navigation -->
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+
+    function showSlides(index) {
+      if (index >= slides.length) {
+        slideIndex = 0;
+      } else if (index < 0) {
+        slideIndex = slides.length - 1;
+      }
+      slides.forEach(slide => slide.style.display = 'none');
+      slides[slideIndex].style.display = 'block';
+    }
+
+    prevButton.addEventListener('click', function() {
+      slideIndex--;
+      showSlides(slideIndex);
+    });
+
+    nextButton.addEventListener('click', function() {
+      slideIndex++;
+      showSlides(slideIndex);
+    });
+
+    showSlides(slideIndex); // Show the first slide initially
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Image Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image_slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Slider Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+>>>>>>> 2f53ec14890213a50d152e92e8851b3805271777
