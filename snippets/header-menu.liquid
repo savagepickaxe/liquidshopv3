@@ -5,11 +5,11 @@
     <div class="nav--gauche">
 <a href="/">
 <img 
-width="40"
-height="40"
-loading="lazy"
-src="{{ header.metafields.headerlogo.image_personnalisee | img_url: '400x400' }}" 
-alt="Image personnalisée"
+    width="40"
+    height="40"
+    loading="lazy"
+    src="{{ header_obj.headerlogo| img_url: '400x400' }}" 
+    alt="Image personnalisée"
 />
 </a>
     </div>
@@ -39,7 +39,7 @@ alt="Image personnalisée"
         width="40"
         height="40"
         loading="lazy"
-        src="{{ header.metafields.headerlogo.image_personnalisee | img_url: '400x400' }}" 
+        src="{{ header_obj.headerlogo| img_url: '400x400' }}" 
         alt="Image personnalisée"
     />
         </a>
